@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { nanoid } from 'nanoid';
+import css from './Phonebook.module.css';
 // import PropTypes from 'prop-types';
 
 class Phonebook extends Component {
@@ -25,8 +26,8 @@ class Phonebook extends Component {
   };
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label htmlFor="nameInputId">
+      <form onSubmit={this.handleSubmit} className={css.phonebookForm}>
+        <label htmlFor="nameInputId" className={css.phonebookLabel}>
           Name
           <input
             type="text"
@@ -40,7 +41,7 @@ class Phonebook extends Component {
             required
           />
         </label>
-        <label>
+        <label htmlFor="numberInputId" className={css.phonebookLabel}>
           Number
           <input
             type="tel"
@@ -48,6 +49,7 @@ class Phonebook extends Component {
             placeholder="Enter tel"
             value={this.state.number}
             onChange={this.handleChange}
+            id="numberInputId"
             pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
             title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
             required

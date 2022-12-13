@@ -1,9 +1,12 @@
 import React from 'react';
+import css from './Contacts.module.css';
 
 const Contacts = ({ contacts }) => (
-  <ul>
-    {contacts.map(({ id, name }) => (
-      <li key={id}>{name}</li>
+  <ul className={css.contactsList}>
+    {contacts.map(({ id, name, number }) => (
+      <li key={id}>
+        {name}: {number}
+      </li>
     ))}
   </ul>
 );
