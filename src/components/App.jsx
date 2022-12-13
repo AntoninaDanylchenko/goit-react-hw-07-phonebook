@@ -1,14 +1,22 @@
 import React, { Component } from 'react';
-import Phonebook from './Phonebook/Phonebook';
 import Section from './Section/Section';
+import Phonebook from './Phonebook/Phonebook';
+import Contacts from './Contacts/Contacts';
 
 class App extends Component {
   state = {
     contacts: [],
     name: '',
   };
+  handleChange = e => {
+    const { name, value } = e.currentTarget;
+    this.setState({
+      [name]: value,
+    });
+  };
 
   render() {
+    const { contacts } = this.state;
     return (
       <div
         style={{
@@ -16,7 +24,10 @@ class App extends Component {
         }}
       >
         <Section title="Phonebook">
-          <Phonebook />
+          <Phonebook onHandleChange={this.handleChange} />
+        </Section>
+        <Section title="Contacts">
+          <Contacts contacts={contacts} />
         </Section>
       </div>
     );

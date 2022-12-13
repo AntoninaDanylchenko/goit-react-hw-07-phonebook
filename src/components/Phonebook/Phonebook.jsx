@@ -1,19 +1,21 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
 
-const Phonebook = () => {
+const Phonebook = ({ onHandleChange }) => (
   <form>
-    <label htmlFor="nameInputId">Name</label>
-    <input
-      type="text"
-      placeholder="Enter name"
-      name="name"
-      id="nameInputId"
-      // onChange={this.handleChange}
-    />
-    <button type="submit">Sign up</button>
-  </form>;
-};
+    <label htmlFor="nameInputId">
+      Name
+      <input
+        type="text"
+        placeholder="Enter name"
+        name="name"
+        id="nameInputId"
+        onChange={onHandleChange}
+      />
+    </label>
+    <button type="submit">Add contact</button>
+  </form>
+);
 
 // Phonebook.prototype = {};
 
