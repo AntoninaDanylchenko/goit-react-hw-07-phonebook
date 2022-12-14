@@ -12,3 +12,30 @@
   font-size: 18px;
   font-weight: 500;
 }
+.phonebookInput {
+  width: 165px;
+  outline: none;
+  height: 20px;
+  border-radius: 5%;
+  border: 0.75px solid rgba(180, 165, 165, 0.8);
+}
+.phonebookInput:focus,
+.phonebookInput:active {
+  border: 1.5px solid rgb(130, 181, 235);
+  background-color: #fff;
+}
+
+.phonebookSubmit {
+  width: 150px;
+  outline: none;
+  height: 25px;
+  border-radius: 5%;
+  cursor: pointer;
+  border: 0.75px solid rgba(180, 165, 165, 0.8);
+  background-color: rgb(255, 255, 255);
+}
+.phonebookSubmit:hover,
+.phonebookSubmit:focus {
+  background-color: rgba(130, 181, 235, 0.4);
+  border: 0.75px solid rgba(130, 181, 235, 0.4);
+}

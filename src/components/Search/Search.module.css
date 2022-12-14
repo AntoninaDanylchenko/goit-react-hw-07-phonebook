@@ -1,8 +1,18 @@
 .findLabel {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 10px;
   font-size: 18px;
   font-weight: 500;
   margin-bottom: 35px;
+}
+.findInput {
+  width: 165px;
+  outline: none;
+  height: 20px;
+  border-radius: 5%;
+  border: 1.5px solid rgba(180, 165, 165, 0.8);
+}
+.findInput:focus {
+  border: 1.5px solid rgb(130, 181, 235);
 }

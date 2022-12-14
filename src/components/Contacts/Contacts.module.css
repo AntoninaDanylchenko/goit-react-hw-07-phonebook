@@ -1,3 +1,26 @@
 .contactsList {
-  padding-left: 40px;
+  padding-left: 25px;
+}
+.contactsListItem {
+  width: 100%;
+  margin-bottom: 15px;
+}
+.contactInfo {
+  display: inline-block;
+}
+.delBtn {
+  display: inline-block;
+  margin-left: 25px;
+  width: 50px;
+  outline: none;
+  height: 25px;
+  border-radius: 5%;
+  cursor: pointer;
+  border: 0.75px solid rgba(180, 165, 165, 0.8);
+  background-color: rgb(255, 255, 255);
+}
+.delBtn:hover,
+.delBtn:focus {
+  background-color: rgba(130, 181, 235, 0.4);
+  border: 0.75px solid rgba(130, 181, 235, 0.4);
 }
