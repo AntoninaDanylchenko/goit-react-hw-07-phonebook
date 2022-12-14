@@ -17,9 +17,15 @@ class App extends Component {
 
   formSubmitData = ({ id, name, number }) => {
     const newContact = { id, name, number };
-    this.setState(prevState => ({
-      contacts: [...prevState.contacts, newContact],
-    }));
+    const nameNormalise = name.toLowerCase();
+    const alertContact = this.state.contacts.filter(contact =>
+      contact.name.toLowerCase().includes(nameNormalise)
+    );
+    alertContact.length
+      ? alert(`${name} is already in contacts`)
+      : this.setState(prevState => ({
+          contacts: [...prevState.contacts, newContact],
+        }));
   };
   handleFilter = e => {
     this.setState({
