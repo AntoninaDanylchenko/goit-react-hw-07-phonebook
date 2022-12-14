@@ -39,6 +39,11 @@ class App extends Component {
       contact.name.toLowerCase().includes(toNormaliseFilter)
     );
   };
+  delContact = contactId => {
+    this.setState(prevState => ({
+      contacts: prevState.contacts.filter(contact => contact.id !== contactId),
+    }));
+  };
 
   render() {
     const { filterContact } = this.state;
@@ -54,7 +59,10 @@ class App extends Component {
         </Section>
         <Section title="Contacts">
           <Search value={filterContact} onChange={this.handleFilter} />
-          <Contacts contacts={this.getFilterscontact()} />
+          <Contacts
+            contacts={this.getFilterscontact()}
+            onDelContact={this.delContact}
+          />
         </Section>
       </div>
     );
