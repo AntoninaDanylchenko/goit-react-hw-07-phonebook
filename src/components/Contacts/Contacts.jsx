@@ -1,5 +1,6 @@
 import React from 'react';
 import css from './Contacts.module.css';
+import PropTypes from 'prop-types';
 
 const Contacts = ({ contacts, onDelContact }) => (
   <ul className={css.contactsList}>
@@ -19,5 +20,14 @@ const Contacts = ({ contacts, onDelContact }) => (
     ))}
   </ul>
 );
+Contacts.prototype = {
+  contacts: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      number: PropTypes.string.isRequired,
+    })
+  ),
+};
 
 export default Contacts;

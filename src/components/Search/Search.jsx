@@ -1,5 +1,6 @@
 import React from 'react';
 import css from './Search.module.css';
+import PropTypes from 'prop-types';
 
 const Search = ({ value, onChange }) => {
   return (
@@ -18,6 +19,10 @@ const Search = ({ value, onChange }) => {
       />
     </label>
   );
+};
+
+Search.prototype = {
+  value: PropTypes.string.isRequired,
 };
 
 export default Search;
