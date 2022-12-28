@@ -6,7 +6,10 @@ import Search from './Search/Search';
 
 const App = () => {
   const [contacts, setContacts] = useState(
-    JSON.parse(window.localStorage.getItem('contacts'))
+    JSON.parse(window.localStorage.getItem('contacts')) ?? [
+      { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
+      { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
+    ]
   );
   const [filterContact, setFilterContact] = useState('');
 
