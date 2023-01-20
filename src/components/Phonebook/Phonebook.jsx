@@ -1,16 +1,19 @@
 import { useState } from 'react';
 import { nanoid } from 'nanoid';
 import css from './Phonebook.module.css';
+import { useDispatch } from 'react-redux';
+import { addContact } from 'redux/contactsSlice';
 
-const Phonebook = ({ onSubmitProp }) => {
-  const [id, setId] = useState('');
+const Phonebook = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
+  const dispatch = useDispatch();
+
   const handleSubmit = e => {
     e.preventDefault();
-    setId(nanoid());
-    onSubmitProp(id, name, number);
+    const newContact = { id: nanoid(), name, number };
+    dispatch(addContact(newContact));
     reset();
   };
   const reset = () => {
