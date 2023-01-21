@@ -1,10 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const contactsInitialState = [];
-
 const contactsSlice = createSlice({
   name: 'tasks',
-  initialState: contactsInitialState,
+  initialState: [],
   reducers: {
     addContact(state, action) {
       const alertContact = state.filter(contact =>

@@ -6,5 +6,6 @@ export const selectFilteredContacts = state => {
         contact.name.toLowerCase().includes(state.filter)
       )
     : state.contacts;
+
   return fiterContacts;
 };
