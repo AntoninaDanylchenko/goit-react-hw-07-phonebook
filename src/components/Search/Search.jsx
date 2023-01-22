@@ -1,16 +1,15 @@
 import css from './Search.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { addFilter } from 'redux/filterSlice';
-import { getFilter } from 'redux/selector';
+import { selectFilter } from 'redux/selector';
 
 const Search = () => {
   const dispatch = useDispatch();
 
   const onFilterChange = query => {
-    console.log(query);
     dispatch(addFilter(query.toLowerCase()));
   };
-  const filter = useSelector(getFilter);
+  const filter = useSelector(selectFilter);
 
   return (
     <label htmlFor="findInputId" className={css.findLabel}>

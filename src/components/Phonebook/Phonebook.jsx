@@ -1,24 +1,23 @@
 import { useState } from 'react';
-import { nanoid } from 'nanoid';
+// import { nanoid } from 'nanoid';
 import css from './Phonebook.module.css';
 import { useDispatch } from 'react-redux';
-import { addContact } from 'redux/contactsSlice';
+import { addContact } from 'redux/operations';
 
 const Phonebook = () => {
   const [name, setName] = useState('');
-  const [number, setNumber] = useState('');
+  const [phone, setPhone] = useState('');
 
   const dispatch = useDispatch();
 
   const handleSubmit = e => {
     e.preventDefault();
-    const newContact = { id: nanoid(), name, number };
-    dispatch(addContact(newContact));
+    dispatch(addContact({ name, phone }));
     reset();
   };
   const reset = () => {
     setName('');
-    setNumber('');
+    setPhone('');
   };
   return (
     <form onSubmit={handleSubmit} className={css.phonebookForm}>
@@ -40,9 +39,9 @@ const Phonebook = () => {
         Number
         <input
           type="tel"
-          name="number"
-          value={number}
-          onChange={e => setNumber(e.target.value)}
+          name="phone"
+          value={phone}
+          onChange={e => setPhone(e.target.value)}
           id="numberInputId"
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"

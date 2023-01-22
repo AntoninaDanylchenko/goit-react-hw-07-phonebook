@@ -3,7 +3,7 @@ import css from './Contacts.module.css';
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 // import { getContacts } from 'redux/selector';
-import { deleteContact } from 'redux/contactsSlice';
+import { deleteContact } from 'redux/operations';
 import { selectFilteredContacts } from 'redux/selector';
 
 const Contacts = () => {
@@ -16,10 +16,10 @@ const Contacts = () => {
 
   return (
     <ul className={css.contactsList}>
-      {contacts.map(({ id, name, number }) => (
+      {contacts.map(({ id, name, phone }) => (
         <li key={id} className={css.contactsListItem}>
           <p className={css.contactInfo}>
-            {name}: {number}
+            {name}: {phone}
           </p>
           <button
             type="button"

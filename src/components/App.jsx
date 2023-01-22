@@ -3,40 +3,19 @@ import Section from './Section/Section';
 import Phonebook from './Phonebook/Phonebook';
 import Contacts from './Contacts/Contacts';
 import Search from './Search/Search';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchContact } from 'redux/operations';
+import { selectIsLoading, selectError } from 'redux/selector';
 
 const App = () => {
-  // const [contacts, setContacts] = useState(
-  //   JSON.parse(window.localStorage.getItem('contacts')) ?? [
-  //     { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
-  //     { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
-  //   ]
-  // );
-  // const [filterContact, setFilterContact] = useState('');
+  const dispatch = useDispatch();
+  const isLoading = useSelector(selectIsLoading);
+  const error = useSelector(selectError);
 
-  // useEffect(() => {
-  //   window.localStorage.setItem('contacts', JSON.stringify(contacts));
-  // }, [contacts]);
-
-  // const formSubmitData = (id, name, number) => {
-  //   const newContact = { id, name, number };
-  //   const alertContact = contacts.filter(contact =>
-  //     contact.name.toLowerCase().includes(name.toLowerCase())
-  //   );
-  //   alertContact.length
-  //     ? alert(`${name} is already in contacts`)
-  //     : setContacts(pr => [...pr, newContact]);
-  // };
-
-  // const getFilterscontact = () => {
-  // const toNormaliseFilter = filterContact.toLowerCase();
-  // return contacts.filter(contact =>
-  //   contact.name.toLowerCase().includes(toNormaliseFilter)
-  // );
-  // };
-
-  // const handleFilter = e => {
-  //   setFilterContact(e.currentTarget.value);
-  // };
+  useEffect(() => {
+    dispatch(fetchContact());
+  }, [dispatch]);
 
   return (
     <div
@@ -47,6 +26,7 @@ const App = () => {
       <Section title="Phonebook">
         <Phonebook />
       </Section>
+      {isLoading && !error && <b>Request in progress...</b>}
       <Section title="Contacts">
         <Search />
         <Contacts />
