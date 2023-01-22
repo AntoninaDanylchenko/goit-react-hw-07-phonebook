@@ -1,18 +1,28 @@
 import { useState } from 'react';
 // import { nanoid } from 'nanoid';
 import css from './Phonebook.module.css';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from 'redux/operations';
+import { selectContacts } from 'redux/selector';
 
 const Phonebook = () => {
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
 
+  const storeContacts = useSelector(selectContacts);
+
   const dispatch = useDispatch();
 
   const handleSubmit = e => {
     e.preventDefault();
-    dispatch(addContact({ name, phone }));
+
+    const alertContact = storeContacts.filter(
+      contact => contact.name.toLowerCase() === name.toLowerCase()
+    );
+    alertContact.length
+      ? alert(`${name} is already in contacts`)
+      : dispatch(addContact({ name, phone }));
+
     reset();
   };
   const reset = () => {
